@@ -29,9 +29,9 @@ class BikeController extends Controller
     }
 
     /**
-     * Exibe o formulário para criar um novo recurso.
+     * Exibe o formulário em visão para criar um novo recurso.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Resources\View
      */
     public function createHtml()
     {
@@ -62,7 +62,8 @@ class BikeController extends Controller
        
     }
 
-        /**
+
+    /**
      * Exibe o recurso específico em uma visão.
      *
      * @param  Request  $request
@@ -87,18 +88,7 @@ class BikeController extends Controller
         $bikes = $this->index();
         return view('selecionaBike',['bikes'=>$bikes]);
     }
-    
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-    }
 
     /**
      * Direciona uma ação recebida para a respectiva action.
@@ -117,7 +107,20 @@ class BikeController extends Controller
         
     }
 
+        
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        
+    }
+
+    
     /**
      * Atualiza o recurso específico da base de dados.
      *
