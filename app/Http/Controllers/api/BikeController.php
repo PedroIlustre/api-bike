@@ -9,7 +9,7 @@ use App\Models\Bike;
 class BikeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Exibe uma lista de recursos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,7 +19,7 @@ class BikeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Exibe uma lista de recursos em uma visão.
      *
      * @return \View
      */
@@ -29,17 +29,17 @@ class BikeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Exibe o formulário para criar um novo recurso.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createHtml()
     {
         return view('criar');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Registra um novo recurso na base de dados.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -51,7 +51,7 @@ class BikeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Exibe o recurso específico.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -62,8 +62,23 @@ class BikeController extends Controller
        
     }
 
+        /**
+     * Exibe o recurso específico em uma visão.
+     *
+     * @param  Request  $request
+     * @return \Resources\View
+     */
+    public function showHtml(Request $request)
+    {
+        if($request->idBike == ''){
+            return $this->indexHtml();
+        }
+        $bike = $this->show($request->idBike);
+        return view('bike',['bike'=>$bike]);
+    }
+
     /**
-     * Display the specified resource.
+     * Consulta recursos e exibe-os em uma visão.
      *
      * @return \Illuminate\Http\Response
      */
@@ -72,21 +87,7 @@ class BikeController extends Controller
         $bikes = $this->index();
         return view('selecionaBike',['bikes'=>$bikes]);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function consultHtmlById(Request $request)
-    {
-        if($request->idBike == ''){
-            return $this->indexHtml();
-        }
-        $bike = $this->show($request->idBike);
-        return view('bike',['bike'=>$bike]);
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -99,19 +100,26 @@ class BikeController extends Controller
         
     }
 
+    /**
+     * Direciona uma ação recebida para a respectiva action.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Resources\View
+     */
     public function actionBike(Request $request){
         $form_bike = $request->all();
         if(array_key_exists('consultar',$form_bike))
-            return $this->consultHtmlById($request);
+            return $this->showHtml($request);
 
-        if(array_key_exists('deletar',$form_bike)){
-            $this->destroy($request->idBike);
-            return redirect('/api/consult');
-        }
+        if(array_key_exists('deletar',$form_bike))
+            return $this->destroyHtml($request->idBike);
+        
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * Atualiza o recurso específico da base de dados.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -123,8 +131,9 @@ class BikeController extends Controller
         $bike->update($request->all());
     }
 
+
     /**
-     * Remove the specified resource from storage.
+     * Remove um recurso específico da base de dados.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -133,5 +142,17 @@ class BikeController extends Controller
     {
         $bike = Bike::findOrFail($id);
         $bike->delete();
+    }
+
+
+    /**
+     * Remove um recurso específico da base de dados e redireciona para uma visão.
+     *
+     * @param  int  $id
+     * @return \Resources\View
+     */
+    public function destroyHtml($id){
+        $this->destroy($id);
+        return redirect('/api/consult');
     }
 }
