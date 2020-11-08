@@ -35,18 +35,12 @@
             Campo de digitação obrigatório.
         </div>
         </div>
-    </div>
-
-    <hr class="mb-4">
-    <h4 class="mb-3">Vendida</h4>
-    <div class="d-block my-3">
-        <div class="custom-control custom-radio">
-        <input id="nao" name="vendida" type="radio" class="custom-control-input" checked required>
-        <label class="custom-control-label" for="nao">Não</label>
+        <div class="col-md-6 mb-3">
+        <label for="vendida">Vendida</label>
+        <div class="custom-control custom-checkbox">
+        <input id="nao" name="vendida" type="checkbox" class="custom-control-input" checked >
+        <label class="custom-control-label" for="nao"></label>
         </div>
-        <div class="custom-control custom-radio">
-        <input id="sim" name="vendida" type="radio" class="custom-control-input"  required>
-        <label class="custom-control-label" for="sim">Sim</label>
         </div>
     </div>
     <hr class="mb-4">

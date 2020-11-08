@@ -46,7 +46,7 @@ class BikeController extends Controller
      */
     public function store(Request $request)
     {
-        $request['vendida'] = $request->vendida == 'on' || $request->vendida == '1' ? 1:0;;
+        $request['vendida'] = $request->vendida == 'on' || $request->vendida == '1' ? 1 : 0;
         Bike::create($request->all());
     }
 
@@ -106,7 +106,7 @@ class BikeController extends Controller
 
         if(array_key_exists('deletar',$form_bike)){
             $this->destroy($request->idBike);
-            return '/api/consultar';
+            return redirect('/api/consult');
         }
     }
 
