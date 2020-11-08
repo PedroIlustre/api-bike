@@ -46,7 +46,7 @@ class BikeController extends Controller
      */
     public function store(Request $request)
     {
-        echo'<pre>';print_r($request->all());die;
+        $request['vendida'] = $request->vendida == 'on' || $request->vendida == '1' ? 1:0;;
         Bike::create($request->all());
     }
 
