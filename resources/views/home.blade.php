@@ -14,9 +14,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('listar') }}">Listar Todas Bikes</a>
-                    <a href="{{ route('consultar') }}">Consultar </a>
-                    <a href="{{ route('criar') }}">Criar</a>
+                    <a href="{{ route('list') }}">Listar Todas Bikes</a>
+                    <a href="{{ route('consult') }}">Consultar </a>
+                    <a href="{{ route('create') }}">Criar</a>
                     <a href="{{ url('/api/atualizar') }}">Atualizar </a>
                     <a href="{{ url('/api/editar') }}">Editar </a>
                 </div>

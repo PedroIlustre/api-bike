@@ -35,7 +35,7 @@ class BikeController extends Controller
      */
     public function create()
     {
-        //
+        return view('criar');
     }
 
     /**
@@ -46,6 +46,7 @@ class BikeController extends Controller
      */
     public function store(Request $request)
     {
+        echo'<pre>';print_r($request->all());die;
         Bike::create($request->all());
     }
 
@@ -66,7 +67,7 @@ class BikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function consultarHtml()
+    public function consultHtml()
     {
         $bikes = $this->index();
         return view('selecionaBike',['bikes'=>$bikes]);
@@ -78,7 +79,7 @@ class BikeController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function consultarHtmlById(Request $request)
+    public function consultHtmlById(Request $request)
     {
         if($request->idBike == ''){
             return $this->indexHtml();
@@ -101,7 +102,7 @@ class BikeController extends Controller
     public function actionBike(Request $request){
         $form_bike = $request->all();
         if(array_key_exists('consultar',$form_bike))
-            return $this->consultarHtmlById($request);
+            return $this->consultHtmlById($request);
 
         if(array_key_exists('deletar',$form_bike)){
             $this->destroy($request->idBike);

@@ -7,7 +7,7 @@
         Busque sua bike pelo ID
         </h2>
         <div class="links">
-        <form method="post" action="{{ route('acaobike.byid') }}">
+        <form method="post" action="{{ route('actionbike.byid') }}">
         @csrf
             <select name="idBike"> 
             <option value=""> .: Todas :. </option>
