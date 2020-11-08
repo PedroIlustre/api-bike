@@ -25,9 +25,8 @@ Route::patch('/preferences/{id}',[
     'uses' => 'UserController@update'
 ]);
 
-Route::get('/api/todasbikes', 'api\BikeController@indexHtml')->name('todasbikes');
+Route::get('/api/listar', 'api\BikeController@indexHtml')->name('listar');
 Route::get('/api/consultar', 'api\BikeController@consultarHtml')->name('consultar');
-Route::post('/api/acaobikeselecionada', 'api\BikeController@actionBike')->name('acaobikeselecionada.byid');
-
-Route::post('/api/consultarbyid', 'api\BikeController@consultarHtmlById')->name('consultar.byid');
+Route::post('/api/acaobike', 'api\BikeController@actionBike')->name('acaobike.byid');
+Route::post('/api/criar', 'api\BikeController@criarHtml')->name('criar');
 

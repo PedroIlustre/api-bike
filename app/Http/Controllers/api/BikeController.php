@@ -95,17 +95,18 @@ class BikeController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     public function actionBike(Request $request){
         $form_bike = $request->all();
         if(array_key_exists('consultar',$form_bike))
-                return $this->consultarHtmlById($request);
+            return $this->consultarHtmlById($request);
 
-        if(array_key_exists('deletar',$form_bike))
-            return $this->destroy($request->idBike);
-
+        if(array_key_exists('deletar',$form_bike)){
+            $this->destroy($request->idBike);
+            return '/api/consultar';
+        }
     }
 
     /**

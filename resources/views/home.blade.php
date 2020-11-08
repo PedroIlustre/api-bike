@@ -14,12 +14,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('todasbikes') }}">Listar Todas Bikes</a>
+                    <a href="{{ route('listar') }}">Listar Todas Bikes</a>
                     <a href="{{ route('consultar') }}">Consultar </a>
-                    <a href="{{ url('/api/deletar') }}">Deletar </a>
+                    <a href="{{ route('criar') }}">Criar</a>
                     <a href="{{ url('/api/atualizar') }}">Atualizar </a>
                     <a href="{{ url('/api/editar') }}">Editar </a>
-                    <a href="{{ url('/api/criar') }}">Criar</a>
                 </div>
             </div>
 </div>
