@@ -108,7 +108,6 @@ class BikeController extends Controller
     }
 
         
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -120,7 +119,7 @@ class BikeController extends Controller
         
     }
 
-    
+
     /**
      * Atualiza o recurso específico da base de dados.
      *
