@@ -1,0 +1,135 @@
+<?php
+
+namespace App\Http\Controllers\api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Bike;
+
+class BikeController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return Bike::all();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \View
+     */
+    public function indexHtml(){
+        $bikes = $this->index();
+        return view('todasbikes',['bikes'=>$bikes]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        Bike::create($request->all());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return Bike::findOrFail($id);
+       
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function consultarHtml()
+    {
+        $bikes = $this->index();
+        return view('selecionaBike',['bikes'=>$bikes]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function consultarHtmlById(Request $request)
+    {
+        if($request->idBike == ''){
+            return $this->indexHtml();
+        }
+        $bike = $this->show($request->idBike);
+        return view('bike',['bike'=>$bike]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    public function actionBike(Request $request){
+        $form_bike = $request->all();
+        if(array_key_exists('consultar',$form_bike))
+                return $this->consultarHtmlById($request);
+
+        if(array_key_exists('deletar',$form_bike))
+            return $this->destroy($request->idBike);
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $bike = Bike::findOrFail($id);
+        $bike->update($request->all());
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $bike = Bike::findOrFail($id);
+        $bike->delete();
+    }
+}
