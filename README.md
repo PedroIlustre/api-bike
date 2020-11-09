@@ -1,61 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+- Ambiente - 
+Com o intuíto de agilizar o processo de manter
+um ambiente configurado para utilizar laravel e todas as 
+suas ferramentas, instalei o 'laragon' para tal.
+Todas as instalações e configurações de de dependências f
+oram realizadas dentro do ambiente do laragon.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+- Estrutura -
+A estrutura utilizada segue o padrão MVC do laravel, criando as entidades em classes de tipo modelo (model),
+para ali manter os atributos das entidades do projeto. Foi escolhido tal estrutura por questão de legibilidade do código,
+agilidade de desenvolvimento (utilizando de todos os recursos disponíveis na documentação do laravel)
 
-## About Laravel
+- Controladores - 
+Foi utilizado comandos nativos do laravel para criar os controladores com as assinaturas e nome dos métodos 
+pré-definidos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Testes -
+Foram criados testes de unidade para os atributos da classe Bike
+Foram criados 2 testes de funcionalidade para testar as rotas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Endpoints API - 
+GET 	http://api-bike.test/api/bikes/ - Lista todas as bikes cadastradas e seus atributos
+GET 	http://api-bike.test/api/bikes/{id} - Consulta uma bike pelo id
+DELETE 	http://api-bike.test/api/bikes/{id} - Deleta uma bike pelo id
+PUT 	http://api-bike.test/api/bikes/{id} - Atualiza todas as informações de uma bike pelo id
+PATH 	http://api-bike.test/api/bikes/{id} - Atualiza alguma informação expecífica de uma bike pelo id
+POST 	http://api-bike.test/api/bikes - Cria uma bike ao enviar os parâmetros informados
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+$paramns = {
+    "descricao": "Caloi",
+    "modelo": "078B",
+    "preco": 250,
+    "data_cadastro": "2018-01-01 00:00:00",
+    "vendida": 0
+}
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Plus
+- Integração do backend com interface - 
+Após criado os métodos padrão CRUD das clases e testados os endpoints por meio da ferramenta PostMan, 
+foi instalado uma dependência do laravel com o composer chamdado: laravel/ui "^1.2" para fazer a integração
+do backend com a interface, para assim ter um plus da API criada e também testada na camada da aplicação. 
