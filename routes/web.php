@@ -27,7 +27,6 @@ Route::patch('/preferences/{id}',[
 
 Route::get('/api/bikes', 'api\BikeController@index')->name('bikes');
 Route::get('/api/list', 'api\BikeController@indexHtml')->name('list');
-Route::get('/login', 'api\BikeController@indexHtml')->name('login');
 Route::get('/api/consult', 'api\BikeController@consultHtml')->name('consult');
 Route::post('/api/actionbike', 'api\BikeController@actionBike')->name('actionbike');
 Route::get('/api/create', 'api\BikeController@createHtml')->name('create');

@@ -48,6 +48,7 @@ class BikeController extends Controller
     {
         $request['vendida'] = $request->vendida == 'on' || $request->vendida == '1' ? 1 : 0;
         Bike::create($request->all());
+        return $this->indexHtml();
     }
 
     /**
